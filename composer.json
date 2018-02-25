@@ -1,0 +1,25 @@
+{
+    "name": "yo4o/dqk",
+    "description": "Simple PHP library for killing dead MySQL queries",
+    "keywords": ["php", "query", "kill", "library"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Ivan Hristov",
+            "email": "ihristov@mi9retail.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+		"php": ">=5.4"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "5.2.*"
+    },
+	"autoload": {
+        "psr-4": {
+            "Yo4o\\dqk\\": "src/",
+            "Yo4o\\dqk\\db\\": "src/db"
+        }
+    }
+}
