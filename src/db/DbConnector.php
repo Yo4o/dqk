@@ -2,10 +2,22 @@
 
 namespace Yo4o\dqk\db;
 
+/**
+ * PDO Wrapper
+ * 
+ */
 class DbConnector {
 
+	/**
+	 * instance of db connection
+	 * @var resource
+	 */
 	private static $_instance;
 
+	/**
+	 * get current DB connection
+	 * @return resource
+	 */
 	public static function getConnection() {
 		if (!self::$_instance) {
 			include_once('config.php');
@@ -16,13 +28,19 @@ class DbConnector {
 		return self::$_instance;
 	}
 
+	/**
+	 * a way to query connected DB
+	 * @param  string $sql    SQL
+	 * @param  array  $params
+	 * @return mixed
+	 */
 	public static function executeQuery($sql, array $params = []) {
+		$result = $rows = [];
+
 		$db = self::getConnection();
 		if (!$db || !$sql) {
-			return false;
+			return $result;
 		}
-
-		$result = $rows = [];
 
 		$stmt = $db->prepare($sql);
 		$stmt->execute($params);
